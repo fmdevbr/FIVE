@@ -1,0 +1,238 @@
+2014-06-18 15:53:12,736 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Botão btSearch pressionado.
+2014-06-18 15:53:12,737 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Criando filtro da pesquisa.
+2014-06-18 15:53:12,738 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Speakers: []
+2014-06-18 15:53:12,738 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Utterances: []
+2014-06-18 15:53:12,745 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - 388 Amostras pesquisadas.
+2014-06-18 15:53:21,064 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btUpdate pressionado.
+2014-06-18 15:53:21,065 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 1]
+2014-06-18 15:53:21,126 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 15:53:21,134 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 15:53:21,137 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 15:53:22,344 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btAddSpeaker pressionado.
+2014-06-18 15:53:22,345 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - Inicializando Filter Dialog
+2014-06-18 15:53:26,832 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - o botao btConfirmar foi pressionado.
+2014-06-18 15:53:28,000 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btAddUtterance pressionado.
+2014-06-18 15:53:28,001 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - Inicializando Filter Dialog
+2014-06-18 15:53:33,432 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - o botao btConfirmar foi pressionado.
+2014-06-18 15:53:36,336 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 1
+2014-06-18 15:53:36,336 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 15:53:36,337 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 15:53:36,444 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Extração atualizada com sucesso.
+2014-06-18 15:53:49,280 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 15:53:49,281 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Extração de Características: Extracao]
+2014-06-18 15:53:49,332 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 15:53:49,516 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - ERROR - java.util.concurrent.ExecutionException: br.ufpe.cin.five.exception.RegisterException: RegisterException: ExtractionException: HtkException: ShellCommandExecutorException: Comando executado com erro: 
+C:\Users\Ricardo\Documents\Diego\resources\htk-3.3\HCopy -C C:\Users\Ricardo\Documents\Diego\temp\config.txt C:\Users\Ricardo\Documents\Diego\samples\Diego_1_1_1.wav C:\Users\Ricardo\Documents\Diego\features\Extracao\Diego_1_1_1.mfc
+  ERROR [+6311]  SaveBuffer: cannot create file C:\Users\Ricardo\Documents\Diego\features\Extracao\Diego_1_1_1.mfc
+  ERROR [+1014]  PutTargetFile: Could not save parm file C:\Users\Ricardo\Documents\Diego\features\Extracao\Diego_1_1_1.mfc
+ FATAL ERROR - Terminating program C:\Users\Ricardo\Documents\Diego\resources\htk-3.3\HCopy
+
+2014-06-18 15:54:23,576 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btRemove pressionado.
+2014-06-18 15:54:24,509 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Usuário confirmou a exclusao.
+2014-06-18 15:54:27,440 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btRemove pressionado.
+2014-06-18 15:54:28,566 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Usuário confirmou a exclusao.
+2014-06-18 15:54:30,376 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btSearch pressionado.
+2014-06-18 15:54:30,744 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btSearch pressionado.
+2014-06-18 15:54:31,872 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btInserir pressionado.
+2014-06-18 15:54:31,873 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 0]
+2014-06-18 15:54:31,968 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 15:54:31,977 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 15:54:31,980 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 15:54:43,816 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 15:54:43,817 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 15:54:43,817 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 15:54:43,864 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - ERROR - org.hibernate.exception.ConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`diego`.`classification`, CONSTRAINT `FKDB110006A1EF19E` FOREIGN KEY (`extraction_id`) REFERENCES `extraction` (`id`))
+2014-06-18 15:54:53,113 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 15:54:53,113 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 15:54:53,114 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 15:54:53,139 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - ERROR - org.hibernate.exception.ConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`diego`.`classification`, CONSTRAINT `FKDB110006A1EF19E` FOREIGN KEY (`extraction_id`) REFERENCES `extraction` (`id`))
+2014-06-18 15:54:54,841 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btCancel pressionado.
+2014-06-18 15:57:59,237 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Iniciando tela principal do FIVE...
+2014-06-18 15:57:59,252 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Inicializando o menu de opções...
+2014-06-18 15:58:06,232 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Abrindo projeto.
+2014-06-18 15:58:34,666 - br.ufpe.cin.five.gui.speaker.SpeakerPanel - INFO - Inicializando SpeakerPanel.
+2014-06-18 15:58:35,033 - br.ufpe.cin.five.gui.utterance.UtterancePanel - INFO - Inicializando UtterancePanel.
+2014-06-18 15:58:35,055 - br.ufpe.cin.five.gui.dictionary.DictionaryPanel - INFO - Inicializando Word Panel.
+2014-06-18 15:58:35,074 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Inicializando DataBasePanel.
+2014-06-18 15:58:35,124 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Inicializando ExtractionPanel.
+2014-06-18 15:58:35,156 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - Inicializando ClassificationPanel.
+2014-06-18 15:58:35,175 - br.ufpe.cin.five.gui.engine.EnginePanel - INFO - Inicializando EnginePanel.
+2014-06-18 15:58:53,111 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Abrindo projeto.
+2014-06-18 15:58:58,545 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btInserir pressionado.
+2014-06-18 15:58:59,106 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 0]
+2014-06-18 15:59:00,310 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 15:59:00,326 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 15:59:00,332 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 15:59:15,664 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 15:59:15,664 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 15:59:15,665 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 15:59:15,847 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Extração inserida com sucesso.
+2014-06-18 15:59:19,296 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 15:59:19,317 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Extração de Características: HTK]
+2014-06-18 15:59:19,597 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:00:16,447 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Extração de Características realizado(a) com sucesso.
+2014-06-18 16:00:25,160 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:00:25,162 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Classificação de Padrões: HTK]
+2014-06-18 16:00:25,214 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:00:25,291 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - ERROR - java.util.concurrent.ExecutionException: br.ufpe.cin.five.exception.RegisterException: RegisterException: null
+2014-06-18 16:00:30,776 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btUpdate foi pressionado.
+2014-06-18 16:00:30,863 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Inicializando Classification Dialog. [Operation = 1]
+2014-06-18 16:00:30,973 - br.ufpe.cin.five.gui.classification.PanelGMMParams - INFO - Inicializando PanelGMMParams
+2014-06-18 16:00:30,977 - br.ufpe.cin.five.gui.classification.PanelSVMParams - INFO - Inicializando PanelSVMParams.
+2014-06-18 16:00:31,001 - br.ufpe.cin.five.gui.classification.PanelHMMParams - INFO - Inicializando PanelHMMParams.
+2014-06-18 16:00:37,240 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Botão btCancel pressionado.
+2014-06-18 16:00:39,168 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btRemove foi pressionado.
+2014-06-18 16:00:40,287 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - Usuário confirmou a exclusao.
+2014-06-18 16:00:40,365 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - Classificação excluída com sucesso.
+2014-06-18 16:00:42,056 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btInsert foi pressionado.
+2014-06-18 16:00:42,057 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Inicializando Classification Dialog. [Operation = 0]
+2014-06-18 16:00:42,108 - br.ufpe.cin.five.gui.classification.PanelGMMParams - INFO - Inicializando PanelGMMParams
+2014-06-18 16:00:42,111 - br.ufpe.cin.five.gui.classification.PanelSVMParams - INFO - Inicializando PanelSVMParams.
+2014-06-18 16:00:42,118 - br.ufpe.cin.five.gui.classification.PanelHMMParams - INFO - Inicializando PanelHMMParams.
+2014-06-18 16:00:53,848 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:00:53,849 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Campos validados.
+2014-06-18 16:00:53,849 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 16:00:53,867 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Classificaçãoo inserida com sucesso.
+2014-06-18 16:00:57,336 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:00:57,337 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Classificação de Padrões: HTKC]
+2014-06-18 16:00:57,425 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:00:57,547 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - ERROR - java.util.concurrent.ExecutionException: br.ufpe.cin.five.exception.RegisterException: RegisterException: ClassificationException: n must be positive
+2014-06-18 16:01:12,321 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btUpdate pressionado.
+2014-06-18 16:01:12,322 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 1]
+2014-06-18 16:01:12,395 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 16:01:12,404 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 16:01:12,406 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 16:01:13,816 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btAddUtterance pressionado.
+2014-06-18 16:01:13,849 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - Inicializando Filter Dialog
+2014-06-18 16:01:20,696 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btUpdate pressionado.
+2014-06-18 16:01:20,697 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 1]
+2014-06-18 16:01:20,764 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 16:01:20,773 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 16:01:20,776 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 16:01:21,912 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btAddSpeaker pressionado.
+2014-06-18 16:01:21,914 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - Inicializando Filter Dialog
+2014-06-18 16:01:24,536 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btAddUtterance pressionado.
+2014-06-18 16:01:24,537 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - Inicializando Filter Dialog
+2014-06-18 16:01:29,608 - br.ufpe.cin.five.gui.dialogs.FilterDialog - INFO - o botao btConfirmar foi pressionado.
+2014-06-18 16:01:31,304 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 1
+2014-06-18 16:01:31,305 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 16:01:31,305 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 16:01:31,366 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Extração atualizada com sucesso.
+2014-06-18 16:01:34,992 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:01:34,993 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Extração de Características: HTK]
+2014-06-18 16:01:35,044 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:02:17,738 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Extração de Características realizado(a) com sucesso.
+2014-06-18 16:04:00,920 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btUpdate foi pressionado.
+2014-06-18 16:04:00,921 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Inicializando Classification Dialog. [Operation = 1]
+2014-06-18 16:04:00,959 - br.ufpe.cin.five.gui.classification.PanelGMMParams - INFO - Inicializando PanelGMMParams
+2014-06-18 16:04:00,961 - br.ufpe.cin.five.gui.classification.PanelSVMParams - INFO - Inicializando PanelSVMParams.
+2014-06-18 16:04:00,967 - br.ufpe.cin.five.gui.classification.PanelHMMParams - INFO - Inicializando PanelHMMParams.
+2014-06-18 16:04:03,536 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:04:03,537 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Campos validados.
+2014-06-18 16:04:03,537 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 16:04:03,574 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Classificação atualizada com sucesso.
+2014-06-18 16:04:07,712 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:04:07,713 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Classificação de Padrões: HTKC]
+2014-06-18 16:04:07,774 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:04:33,197 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Classificação de Padrões realizado(a) com sucesso.
+2014-06-18 16:07:58,992 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Salvando o resultado no arquivo C:\Users\Ricardo\Documents\Diego\results\diego_ext2_cla2.res
+2014-06-18 16:07:58,995 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Renomeando o arquivo de modelos C:\Users\Ricardo\Documents\Diego\models\diego_ext2_cla2.mod
+2014-06-18 16:07:58,997 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Resultado salvo com sucesso.
+2014-06-18 16:08:06,904 - br.ufpe.cin.five.gui.engine.EnginePanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:08:14,592 - br.ufpe.cin.five.gui.engine.EnginePanel - INFO - O botão btInsert foi pressionado.
+2014-06-18 16:08:14,682 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Inicializando Engine Dialog. [Operation = 0]
+2014-06-18 16:08:14,756 - br.ufpe.cin.five.gui.engine.SpeechEnginePanel - INFO - Inicializando Speech Engine Panel
+2014-06-18 16:08:26,456 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:08:26,457 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Campos validados.
+2014-06-18 16:08:26,510 - br.ufpe.cin.five.gui.engine.EngineDialog - ERROR - org.hibernate.HibernateException: identifier of an instance of br.ufpe.cin.five.core.utterance.Word was altered from 3 to 2
+2014-06-18 16:08:37,352 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:08:37,353 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Campos validados.
+2014-06-18 16:08:37,388 - br.ufpe.cin.five.gui.engine.EngineDialog - ERROR - org.hibernate.exception.ConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`diego`.`engine`, CONSTRAINT `FK7BFCE6622644EF70` FOREIGN KEY (`grammar_id`) REFERENCES `grammar` (`id`))
+2014-06-18 16:08:51,353 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:08:51,353 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Campos validados.
+2014-06-18 16:08:51,354 - br.ufpe.cin.five.gui.engine.EngineDialog - ERROR - RegisterException: Já existe um motor com este ID: 0 no banco de dados.
+2014-06-18 16:09:00,888 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Botão btCancel pressionado.
+2014-06-18 16:22:48,736 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Iniciando tela principal do FIVE...
+2014-06-18 16:22:48,747 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Inicializando o menu de opções...
+2014-06-18 16:25:22,640 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Abrindo projeto.
+2014-06-18 16:25:40,160 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Novo projeto.
+2014-06-18 16:25:40,267 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Inicializando componentes de GUI.
+2014-06-18 16:25:57,169 - br.ufpe.cin.five.gui.project.ProjectTypePanel - INFO - Click na lista de tipo de projetos.
+2014-06-18 16:25:57,210 - br.ufpe.cin.five.gui.project.ProjectTypePanel - INFO - Indice da lista selecionado: 0
+2014-06-18 16:25:57,230 - br.ufpe.cin.five.gui.project.ProjectTypePanel - INFO - Tipo de projeto selecionado: ASR
+2014-06-18 16:26:05,580 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Botao avancar pressionado.
+2014-06-18 16:26:15,209 - br.ufpe.cin.five.gui.project.NameProjectPanel - INFO - Procurando pasta do projeto.
+2014-06-18 16:26:34,616 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Botao avancar pressionado.
+2014-06-18 16:26:48,448 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Botão OK pressionado
+2014-06-18 16:26:48,506 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Pasta do projeto selecionada foi C:\Users\Ricardo\Documents
+2014-06-18 16:27:17,255 - br.ufpe.cin.five.gui.speaker.SpeakerPanel - INFO - Inicializando SpeakerPanel.
+2014-06-18 16:27:17,372 - br.ufpe.cin.five.gui.utterance.UtterancePanel - INFO - Inicializando UtterancePanel.
+2014-06-18 16:27:17,407 - br.ufpe.cin.five.gui.dictionary.DictionaryPanel - INFO - Inicializando Word Panel.
+2014-06-18 16:27:17,460 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Inicializando DataBasePanel.
+2014-06-18 16:27:17,571 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Inicializando ExtractionPanel.
+2014-06-18 16:27:17,635 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - Inicializando ClassificationPanel.
+2014-06-18 16:27:17,728 - br.ufpe.cin.five.gui.engine.EnginePanel - INFO - Inicializando EnginePanel.
+2014-06-18 16:27:30,497 - br.ufpe.cin.five.gui.speaker.SpeakerPanel - INFO - Botão btInsert pressionado.
+2014-06-18 16:27:30,546 - br.ufpe.cin.five.gui.speaker.SpeakerDialog - INFO - Inicializando Speaker Dialog. Operation = 0
+2014-06-18 16:27:42,216 - br.ufpe.cin.five.gui.speaker.SpeakerDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 16:27:42,217 - br.ufpe.cin.five.gui.speaker.SpeakerDialog - INFO - Campos validados.
+2014-06-18 16:27:42,386 - br.ufpe.cin.five.gui.speaker.SpeakerDialog - INFO - Locutor inserido com sucesso!
+2014-06-18 16:27:51,968 - br.ufpe.cin.five.gui.utterance.UtterancePanel - INFO - Botão btInsert pressionado.
+2014-06-18 16:27:52,012 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Inicializando Utterance Dialog. Operation = 0
+2014-06-18 16:28:10,456 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 16:28:10,457 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Campos validados.
+2014-06-18 16:28:11,265 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Locução inserida com sucesso.
+2014-06-18 16:28:17,368 - br.ufpe.cin.five.gui.utterance.UtterancePanel - INFO - Botão btInsert pressionado.
+2014-06-18 16:28:17,369 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Inicializando Utterance Dialog. Operation = 0
+2014-06-18 16:28:23,280 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 16:28:23,281 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Campos validados.
+2014-06-18 16:28:23,446 - br.ufpe.cin.five.gui.utterance.UtteranceDialog - INFO - Locução inserida com sucesso.
+2014-06-18 16:28:37,832 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Botão btImport pressionado.
+2014-06-18 16:28:38,082 - br.ufpe.cin.five.gui.sample.SampleDialog - INFO - Inicializando Sample Import Dialog.
+2014-06-18 16:29:51,929 - br.ufpe.cin.five.gui.sample.SampleDialog - INFO - Amostras inseridas com sucesso.
+2014-06-18 16:30:01,001 - br.ufpe.cin.five.gui.sample.SamplePanel - INFO - Botão btImport pressionado.
+2014-06-18 16:30:01,001 - br.ufpe.cin.five.gui.sample.SampleDialog - INFO - Inicializando Sample Import Dialog.
+2014-06-18 16:31:28,779 - br.ufpe.cin.five.gui.sample.SampleDialog - INFO - Amostras inseridas com sucesso.
+2014-06-18 16:34:45,969 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - Botão btInserir pressionado.
+2014-06-18 16:34:46,056 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Inicializando Extraction Dialog.[Operation = 0]
+2014-06-18 16:34:46,239 - br.ufpe.cin.five.gui.extraction.PanelMFCCParams - INFO - Inicializando PanelMFCCProperties
+2014-06-18 16:34:46,246 - br.ufpe.cin.five.gui.extraction.PanelHTKParams - INFO - Inicializando PanelHTKProperties
+2014-06-18 16:34:46,250 - br.ufpe.cin.five.gui.extraction.PanelMGCCParams - INFO - Inicializando PanelMGCCProperties
+2014-06-18 16:36:04,393 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Botão btSave pressionado. Operation = 0
+2014-06-18 16:36:04,393 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Campos validados.
+2014-06-18 16:36:04,394 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 16:36:04,512 - br.ufpe.cin.five.gui.extraction.ExtractionDialog - INFO - Extração inserida com sucesso.
+2014-06-18 16:36:10,840 - br.ufpe.cin.five.gui.extraction.ExtractionPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:36:10,901 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Extração de Características: testerogerhtk]
+2014-06-18 16:36:11,054 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:36:41,771 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Extração de Características realizado(a) com sucesso.
+2014-06-18 16:36:51,104 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btInsert foi pressionado.
+2014-06-18 16:36:51,232 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Inicializando Classification Dialog. [Operation = 0]
+2014-06-18 16:36:51,310 - br.ufpe.cin.five.gui.classification.PanelGMMParams - INFO - Inicializando PanelGMMParams
+2014-06-18 16:36:51,313 - br.ufpe.cin.five.gui.classification.PanelSVMParams - INFO - Inicializando PanelSVMParams.
+2014-06-18 16:36:51,369 - br.ufpe.cin.five.gui.classification.PanelHMMParams - INFO - Inicializando PanelHMMParams.
+2014-06-18 16:37:49,208 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:37:49,209 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Campos validados.
+2014-06-18 16:37:49,209 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Criando filtro da pesquisa.
+2014-06-18 16:37:49,244 - br.ufpe.cin.five.gui.classification.ClassificationDialog - INFO - Classificaçãoo inserida com sucesso.
+2014-06-18 16:38:00,041 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:38:00,042 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Classificação de Padrões: hmmroger]
+2014-06-18 16:38:00,098 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:39:14,141 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Classificação de Padrões realizado(a) com sucesso.
+2014-06-18 16:40:05,553 - br.ufpe.cin.five.gui.classification.ClassificationPanel - INFO - O botão btProcess foi pressionado.
+2014-06-18 16:40:05,553 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Inicializando Results Dialog. Classificação de Padrões: hmmroger]
+2014-06-18 16:40:05,589 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Tipo de projeto = ASR
+2014-06-18 16:40:43,991 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Classificação de Padrões realizado(a) com sucesso.
+2014-06-18 16:41:04,072 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Salvando o resultado no arquivo C:\Users\Ricardo\Documents\TesteRoger\results\testeroger_ext1_cla1.res
+2014-06-18 16:41:04,074 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Renomeando o arquivo de modelos C:\Users\Ricardo\Documents\TesteRoger\models\testeroger_ext1_cla1.mod
+2014-06-18 16:41:04,075 - br.ufpe.cin.five.gui.dialogs.ResultsDialog - INFO - Resultado salvo com sucesso.
+2014-06-18 16:41:10,433 - br.ufpe.cin.five.gui.engine.EnginePanel - INFO - O botão btInsert foi pressionado.
+2014-06-18 16:41:10,504 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Inicializando Engine Dialog. [Operation = 0]
+2014-06-18 16:41:10,684 - br.ufpe.cin.five.gui.engine.SpeechEnginePanel - INFO - Inicializando Speech Engine Panel
+2014-06-18 16:41:25,696 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Botão jSave pressionado. Validando campos.
+2014-06-18 16:41:25,698 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Campos validados.
+2014-06-18 16:41:26,285 - br.ufpe.cin.five.gui.engine.EngineDialog - INFO - Motor inserido com sucesso.
+2014-07-23 00:12:16,383 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Iniciando tela principal do FIVE...
+2014-07-23 00:12:16,412 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Inicializando o menu de opções...
+2014-07-23 00:12:19,534 - br.ufpe.cin.five.gui.TelaPrincipal - INFO - Novo projeto.
+2014-07-23 00:12:19,688 - br.ufpe.cin.five.gui.project.NewProjetctDialog - INFO - Inicializando componentes de GUI.
