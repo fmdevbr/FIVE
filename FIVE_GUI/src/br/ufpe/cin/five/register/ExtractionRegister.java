@@ -98,7 +98,6 @@ public class ExtractionRegister {
     public Extraction search(boolean active) throws RegisterException {
         for (Extraction extraction : this.project.getExtractions()) {
             if (extraction.isActive()) {
-                
                 return extraction;
             }
         }
@@ -106,8 +105,14 @@ public class ExtractionRegister {
     }
     
     public void active(Extraction extraction) throws RegisterException {
-        extraction.setActive(true);
-        update(extraction);        
+        for (Extraction match : project.getExtractions()) {
+            if (match.equals(extraction)) {
+                match.setActive(true);                
+            } else {
+                match.setActive(false);
+            }
+            update(match);
+        }
     }    
 
     public void process(Extraction extraction) throws RegisterException {
@@ -140,7 +145,7 @@ public class ExtractionRegister {
                 int amountOperation = 1;
 
                 String samplesPath = project.getDirectory() + File.separator + "samples";
-                String featuresPath = project.getDirectory() + File.separator + "features" + File.separator + extraction.getDescription();
+                String featuresPath = project.getDirectory() + File.separator + "features";
 
                 publish("Apagando extracoes anteriores...\n");
                 ProjectUtil.deleteDirectory(new File(featuresPath), false, ".mfc");
@@ -182,7 +187,7 @@ public class ExtractionRegister {
 
                             HtkParameters htkParameters = (HtkParameters) extraction;
                             htkParameters.setDecodeProcess(false);
-                            HtkProcess htk = new HtkProcess(project.getDirectory(),featuresPath);
+                            HtkProcess htk = new HtkProcess(project.getDirectory());
                             htk.extract(htkParameters, audio);
 
                         }                         
@@ -195,7 +200,6 @@ public class ExtractionRegister {
                 firePropertyChange("done", null, null);
                 return null;
             } catch (Exception ex) {
-                ex.printStackTrace();
                 throw new RegisterException(ex.getMessage());
             }
         }

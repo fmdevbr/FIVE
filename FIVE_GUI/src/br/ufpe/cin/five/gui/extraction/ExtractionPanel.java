@@ -84,7 +84,7 @@ public class ExtractionPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Técnica", "Descrição", "Extraído"
+                "id", "Técnica", "Descrição", "Ativo"
             }
         ) {
             boolean[] canEdit = new boolean [] {

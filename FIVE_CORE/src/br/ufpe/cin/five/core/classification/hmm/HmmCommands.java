@@ -96,7 +96,7 @@ public class HmmCommands {
                     hmmFile.write("\n");
                 }
                 break;
-            case LEFT_RIGHT:
+            case LEFT_RIGTH:
                 hmmFile.write(" <TransP> " + numberstates + "\n");
                 for (int statefrom = 1; statefrom <= numberstates; statefrom++) {
                     hmmFile.write(" ");

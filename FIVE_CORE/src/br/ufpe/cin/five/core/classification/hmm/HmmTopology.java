@@ -12,5 +12,5 @@ package br.ufpe.cin.five.core.classification.hmm;
  * @author Alexandre
  */
 public enum HmmTopology {
-    SIMPLES, LEFT_RIGHT
+    SIMPLES, LEFT_RIGTH
 }

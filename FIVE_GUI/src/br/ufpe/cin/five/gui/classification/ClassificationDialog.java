@@ -1,6 +1,6 @@
 /**
- * Copyright 2011 Federal University of Pernambuco. All Rights Reserved. Use is
- * subject to license terms.
+ * Copyright 2011 Federal University of Pernambuco.
+ * All Rights Reserved.  Use is subject to license terms.
  *
  * This file is part of FIVE (Framework for an Integrated Voice Environment).
  *
@@ -12,8 +12,6 @@ import br.ufpe.cin.five.core.classification.ClassificationTechnique;
 import br.ufpe.cin.five.core.classification.gmm.GmmParameters;
 import br.ufpe.cin.five.core.classification.hmm.HmmParameters;
 import br.ufpe.cin.five.core.classification.svm.SvmParameters;
-import br.ufpe.cin.five.core.extraction.Extraction;
-import br.ufpe.cin.five.core.extraction.ExtractionTechnique;
 import br.ufpe.cin.five.facade.Facade;
 import br.ufpe.cin.five.gui.dialogs.FilterDialog;
 import br.ufpe.cin.five.core.sample.Environment;
@@ -26,8 +24,6 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 
 /**
@@ -41,35 +37,32 @@ public class ClassificationDialog extends javax.swing.JDialog {
     public static final String PANEL_HMM = ClassificationTechnique.HMM.toString();
 
     private static final Logger logger = Logger.getLogger(ClassificationDialog.class);
-    private Facade facade = Facade.getInstance();
-    private int operation;
-    private Classification classification;
-
+    private Facade facade = Facade.getInstance();   
+    private int operation;    
+    private Classification classification;    
+    
     private PanelGMMParams gmmPanel;
     private PanelSVMParams svmPanel;
     private PanelHMMParams hmmPanel;
-
+    
     private FilterDialog filterDialog;
     private CardLayout tecnicaCardLayout;
     private List<Utterance> utterancesFilter;
     private List<Speaker> speakersFilter;
 
-    private DefaultTableModel model;
-
-    /**
-     * Creates new form ClassificationDialog
-     */
+    /** Creates new form ClassificationDialog */
     public ClassificationDialog(java.awt.Frame parent, boolean modal, Classification classification, int operation) {
         super(parent, modal);
-
+        
         logger.info("Inicializando Classification Dialog. [Operation = " + operation + "]");
-        initComponents();
+        initComponents();        
 
         //Set maximum sizer
-//        tfUtterances.setMaximumSize(new Dimension(6, 20));
-//        tfSpeakers.setMaximumSize(new Dimension(6, 20));        
+        tfUtterances.setMaximumSize(new Dimension(6, 20));
+        tfSpeakers.setMaximumSize(new Dimension(6, 20));        
+        
         this.operation = operation;
-
+        
         this.speakersFilter = new ArrayList<Speaker>();
         this.utterancesFilter = new ArrayList<Utterance>();
 
@@ -81,20 +74,17 @@ public class ClassificationDialog extends javax.swing.JDialog {
         this.tecnicaCardLayout = new CardLayout();
         this.pnTecnicas.setLayout(tecnicaCardLayout);
         this.pnTecnicas.add(this.gmmPanel, PANEL_GMM);
-        this.pnTecnicas.add(this.svmPanel, PANEL_SVM);
-        this.pnTecnicas.add(this.hmmPanel, PANEL_HMM);
+        this.pnTecnicas.add(this.svmPanel, PANEL_SVM);        
+        this.pnTecnicas.add(this.hmmPanel, PANEL_HMM);        
         this.pnTecnicas.setVisible(false);
 
         ClassificationTechnique[] techniques = ClassificationTechnique.values();
         String[] techniqueDescription = new String[techniques.length + 1];
         techniqueDescription[0] = "--";
-
-        //Não haverá mais seleção direta de todas técnicas
         for (int i = 1; i < techniqueDescription.length; i++) {
             techniqueDescription[i] = techniques[i - 1].toString();
         }
         cbTechnique.setModel(new javax.swing.DefaultComboBoxModel(techniqueDescription));
-        cbTechnique.setEnabled(false);
 
         Environment[] environments = Environment.values();
         String[] environmentDescriptions = new String[environments.length + 1];
@@ -102,67 +92,55 @@ public class ClassificationDialog extends javax.swing.JDialog {
         for (int i = 1; i < environmentDescriptions.length; i++) {
             environmentDescriptions[i] = environments[i - 1].toString();
         }
-//        cbEnvironment.setModel(new javax.swing.DefaultComboBoxModel(environmentDescriptions));        
-
+        cbEnvironment.setModel(new javax.swing.DefaultComboBoxModel(environmentDescriptions));        
+        
         Gender[] genders = Gender.values();
         String[] genderDescriptions = new String[genders.length + 1];
         genderDescriptions[0] = "";
         for (int i = 1; i < genderDescriptions.length; i++) {
             genderDescriptions[i] = genders[i - 1].toString();
         }
-//        cbGender.setModel(new javax.swing.DefaultComboBoxModel(genderDescriptions));        
-        //populando a lista de extrações ativas
-        model = (DefaultTableModel) jTable1.getModel();
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        for (Extraction extraction : facade.getProject().getExtractions()) {
-            if (extraction.isActive()) {
-                model.addRow(new Object[]{extraction.getId(), extraction.getTechnique().toString(), extraction, extraction.isActive()});
-            }
-        }
+        cbGender.setModel(new javax.swing.DefaultComboBoxModel(genderDescriptions));        
+                
         if (operation == 1) {
 
             this.classification = classification;
-
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
-                if (jTable1.getModel().getValueAt(i, 0).equals(classification.getExtraction().getId())) {
-                    jTable1.setRowSelectionInterval(i, i);
-                }
-            }
-
+            
             tfTrain.setText((int) (classification.getTrainPercentage() * 100) + "");
             tfTest.setText((int) (classification.getTestPercentage() * 100) + "");
             tfValue.setText(classification.getThresholdValue() + "");
-
+            
             cbTechnique.setSelectedItem(classification.getTechnique().toString());
-            cbTechnique.setEnabled(true);
-//            cbEnvironment.setSelectedItem(classification.getSampleFilter().getEnvironment());
-//            cbGender.setSelectedItem(classification.getSampleFilter().getGender());
-//            if (classification.getSampleFilter().getMaxAge() != -1) {
-//                tfMaxAge.setText(String.valueOf(classification.getSampleFilter().getMaxAge()));
-//            }
-//            if (classification.getSampleFilter().getMinAge() != -1) {
-//                tfMinAge.setText(String.valueOf(classification.getSampleFilter().getMinAge()));
-//            }
-//            cbSNR.setSelectedItem(classification.getSampleFilter().getSnr() + " dB");
-//            utterancesFilter = classification.getSampleFilter().getUtterances();
-//            speakersFilter = classification.getSampleFilter().getSpeakers();
-//
-//            tfSpeakers.setText(cbString(new ArrayList<Object>(speakersFilter)));
-//            tfUtterances.setText(cbString(new ArrayList<Object>(utterancesFilter)));
+
+            cbEnvironment.setSelectedItem(classification.getSampleFilter().getEnvironment());
+            cbGender.setSelectedItem(classification.getSampleFilter().getGender());
+            if (classification.getSampleFilter().getMaxAge() != -1) {
+                tfMaxAge.setText(String.valueOf(classification.getSampleFilter().getMaxAge()));
+            }
+            if (classification.getSampleFilter().getMinAge() != -1) {
+                tfMinAge.setText(String.valueOf(classification.getSampleFilter().getMinAge()));
+            }
+            cbSNR.setSelectedItem(classification.getSampleFilter().getSnr() + " dB");
+            utterancesFilter = classification.getSampleFilter().getUtterances();
+            speakersFilter = classification.getSampleFilter().getSpeakers();
+
+            tfSpeakers.setText(cbString(new ArrayList<Object>(speakersFilter)));
+            tfUtterances.setText(cbString(new ArrayList<Object>(utterancesFilter)));
+
             taDescription.setText(classification.getDescription());
 
             if (classification.getTechnique().toString().equals("GMM")) {
                 GmmParameters gmmParams = (GmmParameters) classification;
                 gmmPanel.setNumGaussianas(gmmParams.getComponents());
                 gmmPanel.setNumIteracoes(gmmParams.getIterations());
-
+            
             } else if (classification.getTechnique().toString().equals("SVM")) {
                 SvmParameters svmParams = (SvmParameters) classification;
                 svmPanel.setKernelType(String.valueOf(svmParams.getKernelType()));
                 svmPanel.setGamma(String.valueOf(svmParams.getGamma()));
                 svmPanel.setCost(String.valueOf(svmParams.getCost()));
                 svmPanel.setDegree(String.valueOf(svmParams.getDegree()));
-
+            
             } else if (classification.getTechnique().toString().equals("HMM")) {
                 HmmParameters hmmParams = (HmmParameters) classification;
                 hmmPanel.setNumGaussianas(hmmParams.getNumGaussians());
@@ -173,31 +151,31 @@ public class ClassificationDialog extends javax.swing.JDialog {
                 hmmPanel.setTopology(hmmParams.getTopology());
                 hmmPanel.setUnitSize(hmmParams.getUnitSize());
             }
+            
+            cbEnvironment.setSelectedItem(classification.getSampleFilter().getEnvironment());
+            cbGender.setSelectedItem(classification.getSampleFilter().getGender());
+            if (classification.getSampleFilter().getMaxAge() != -1) {
+                tfMaxAge.setText(String.valueOf(classification.getSampleFilter().getMaxAge()));
+            }
+            if (classification.getSampleFilter().getMinAge() != -1) {
+                tfMinAge.setText(String.valueOf(classification.getSampleFilter().getMinAge()));
+            }
+            cbSNR.setSelectedItem(classification.getSampleFilter().getSnr() + " dB");
 
-//            cbEnvironment.setSelectedItem(classification.getSampleFilter().getEnvironment());
-//            cbGender.setSelectedItem(classification.getSampleFilter().getGender());
-//            if (classification.getSampleFilter().getMaxAge() != -1) {
-//                tfMaxAge.setText(String.valueOf(classification.getSampleFilter().getMaxAge()));
-//            }
-//            if (classification.getSampleFilter().getMinAge() != -1) {
-//                tfMinAge.setText(String.valueOf(classification.getSampleFilter().getMinAge()));
-//            }
-//            cbSNR.setSelectedItem(classification.getSampleFilter().getSnr() + " dB");
-//
-//            utterancesFilter = classification.getSampleFilter().getUtterances();
-//            speakersFilter = classification.getSampleFilter().getSpeakers();
-//
-//            tfSpeakers.setText(cbString(new ArrayList<Object>(speakersFilter)));
-//            tfUtterances.setText(cbString(new ArrayList<Object>(utterancesFilter)));            
+            utterancesFilter = classification.getSampleFilter().getUtterances();
+            speakersFilter = classification.getSampleFilter().getSpeakers();
+
+            tfSpeakers.setText(cbString(new ArrayList<Object>(speakersFilter)));
+            tfUtterances.setText(cbString(new ArrayList<Object>(utterancesFilter)));            
         } else {
             this.classification = new Classification();
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -224,9 +202,24 @@ public class ClassificationDialog extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         tfValue = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jlTechnique1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jlSpeaker = new javax.swing.JLabel();
+        jlAge = new javax.swing.JLabel();
+        jlGender = new javax.swing.JLabel();
+        cbGender = new javax.swing.JComboBox();
+        tfMinAge = new javax.swing.JTextField();
+        tfMaxAge = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jlUtterance = new javax.swing.JLabel();
+        jlEnvironment = new javax.swing.JLabel();
+        cbEnvironment = new javax.swing.JComboBox();
+        jlSNR = new javax.swing.JLabel();
+        cbSNR = new javax.swing.JComboBox();
+        tfSpeakers = new javax.swing.JTextField();
+        tfUtterances = new javax.swing.JTextField();
+        btAddSpeaker = new javax.swing.JButton();
+        btAddUtterance = new javax.swing.JButton();
         btSave = new javax.swing.JButton();
         btCancel = new javax.swing.JButton();
 
@@ -271,7 +264,7 @@ public class ClassificationDialog extends javax.swing.JDialog {
                         .addGap(131, 131, 131))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,7 +315,7 @@ public class ClassificationDialog extends javax.swing.JDialog {
                 .addComponent(cbTechnique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnTecnicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,9 +362,9 @@ public class ClassificationDialog extends javax.swing.JDialog {
                         .addComponent(tfValue, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
-                        .addContainerGap(241, Short.MAX_VALUE))
+                        .addContainerGap(184, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                         .addGap(172, 172, 172))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -387,31 +380,125 @@ public class ClassificationDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-            },
-            new String [] {
-                "id", "Técnica", "Descrição", "Extraído"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setText("Filtros");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jlSpeaker.setText("Locutor:");
+
+        jlAge.setText("Idade:");
+
+        jlGender.setText("Sexo:");
+
+        jLabel21.setText("-");
+
+        jlUtterance.setText("Locução:");
+
+        jlEnvironment.setText("Ambiente:");
+
+        jlSNR.setText("SNR:");
+
+        cbSNR.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "5 dB", "10 dB", "15 dB" }));
+
+        tfSpeakers.setEditable(false);
+
+        tfUtterances.setEditable(false);
+
+        btAddSpeaker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufpe/cin/five/images/lupa_icone.png"))); // NOI18N
+        btAddSpeaker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddSpeakerActionPerformed(evt);
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
+
+        btAddUtterance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufpe/cin/five/images/lupa_icone.png"))); // NOI18N
+        btAddUtterance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddUtteranceActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
 
-        jlTechnique1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jlTechnique1.setText("Extração:");
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlSpeaker)
+                            .addComponent(jlUtterance))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfUtterances, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(tfSpeakers, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btAddSpeaker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAddUtterance, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jlEnvironment)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlSNR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbSNR, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jlGender)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlAge)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfMinAge, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfMaxAge, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel16))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlGender)
+                            .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlAge)
+                            .addComponent(tfMinAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfMaxAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbSNR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlEnvironment)
+                            .addComponent(cbEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlSNR)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btAddSpeaker, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jlSpeaker)
+                                    .addComponent(tfSpeakers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlUtterance)
+                                .addComponent(tfUtterances, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btAddUtterance, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -421,27 +508,21 @@ public class ClassificationDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlDescription)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlTechnique1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlTechnique1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -518,20 +599,20 @@ public class ClassificationDialog extends javax.swing.JDialog {
                         ((SvmParameters) classification).setKernelType(new Integer(svmPanel.getKernelType()));
                         ((SvmParameters) classification).setGamma(new Integer(svmPanel.getGamma()));
                         ((SvmParameters) classification).setCost(new Integer(svmPanel.getCost()));
-                        ((SvmParameters) classification).setDegree(new Integer(svmPanel.getDegree()));
+                        ((SvmParameters) classification).setDegree(new Integer(svmPanel.getDegree()));                        
                         classification.setTechnique(ClassificationTechnique.SVM);
                     } else if (technique.equals("HMM")) {
                         classification = new HmmParameters();
                         ((HmmParameters) classification).setNumGaussians(new Integer(hmmPanel.getNumGaussianas()));
                         ((HmmParameters) classification).setNumIteractions(new Integer(hmmPanel.getNumIteractions()));
                         ((HmmParameters) classification).setNumHERests(new Integer(hmmPanel.getNumHERests()));
-                        ((HmmParameters) classification).setNumStates(new Integer(hmmPanel.getNumStates()));
+                        ((HmmParameters) classification).setNumStates(new Integer(hmmPanel.getNumStates()));                        
                         ((HmmParameters) classification).setType(hmmPanel.getType());
                         ((HmmParameters) classification).setTopology(hmmPanel.getTopology());
                         ((HmmParameters) classification).setUnitSize(hmmPanel.getUnitSize());
-                        classification.setTechnique(ClassificationTechnique.HMM);
-                    }
-
+                        classification.setTechnique(ClassificationTechnique.HMM);                    
+                    }                     
+                    
                     classification.setTrainPercentage(new Double(tfTrain.getText()) / 100);
                     classification.setTestPercentage(new Double(tfTest.getText()) / 100);
 
@@ -540,34 +621,30 @@ public class ClassificationDialog extends javax.swing.JDialog {
                     }
 
                     classification.setDescription(taDescription.getText());
-                    //selecionando a extração
-                    int line = jTable1.getSelectedRow();
-                    Extraction extraction = (Extraction) jTable1.getValueAt(line, 2);
-                    classification.setExtraction(extraction);
 
                     logger.info("Criando filtro da pesquisa.");
-//                    SampleFilter filter = new SampleFilter();
+                    SampleFilter filter = new SampleFilter();
 
-//                    filter.setSpeakers(speakersFilter);
-//                    filter.setUtterances(utterancesFilter);
-//
-//                    if (cbEnvironment.getSelectedItem() != null && !cbEnvironment.getSelectedItem().toString().equals("")) {
-//                        filter.setEnvironment(Environment.valueOf((String) cbEnvironment.getSelectedItem()));
-//                        
-//                    }
-//                    if (cbGender.getSelectedItem() != null && !cbGender.getSelectedItem().toString().equals("")) {
-//                        filter.setGender(Gender.valueOf((String) cbGender.getSelectedItem()));
-//                    }
-//                    if (!tfMaxAge.getText().equals("")) {
-//                        filter.setMaxAge(Integer.parseInt(tfMaxAge.getText()));
-//                    }
-//                    if (!tfMinAge.getText().equals("")) {
-//                        filter.setMinAge(Integer.parseInt(tfMinAge.getText()));
-//                    }
-//                    if (cbSNR.getSelectedItem() != null && !cbSNR.getSelectedItem().toString().equals("")) {
-//                        filter.setSnr(Integer.parseInt(cbSNR.getSelectedItem().toString().split(" ")[0]));
-//                    }
-                    classification.setSampleFilter(extraction.getSampleFilter());
+                    filter.setSpeakers(speakersFilter);
+                    filter.setUtterances(utterancesFilter);
+
+                    if (cbEnvironment.getSelectedItem() != null && !cbEnvironment.getSelectedItem().toString().equals("")) {
+                        filter.setEnvironment(Environment.valueOf((String) cbEnvironment.getSelectedItem()));
+                    }
+                    if (cbGender.getSelectedItem() != null && !cbGender.getSelectedItem().toString().equals("")) {
+                        filter.setGender(Gender.valueOf((String) cbGender.getSelectedItem()));
+                    }
+                    if (!tfMaxAge.getText().equals("")) {
+                        filter.setMaxAge(Integer.parseInt(tfMaxAge.getText()));
+                    }
+                    if (!tfMinAge.getText().equals("")) {
+                        filter.setMinAge(Integer.parseInt(tfMinAge.getText()));
+                    }
+                    if (cbSNR.getSelectedItem() != null && !cbSNR.getSelectedItem().toString().equals("")) {
+                        filter.setSnr(Integer.parseInt(cbSNR.getSelectedItem().toString().split(" ")[0]));
+                    }
+
+                    classification.setSampleFilter(filter);                                                                               
 
                     if (operation == 0) {
                         facade.insertClassification(classification);
@@ -579,13 +656,12 @@ public class ClassificationDialog extends javax.swing.JDialog {
                         logger.info("Classificação atualizada com sucesso.");
                         JOptionPane.showMessageDialog(null, "Classificação atualizada com sucesso.");
                     }
-
                     this.setVisible(false);
-
+                    
                 } catch (Exception ex) {
                     logger.error(ex.getMessage());
                     JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
+                }                
             } else {
                 logger.warn("A divisão da base de dados tem que totalizar 100%");
                 JOptionPane.showMessageDialog(null, "A divisão da base de dados tem que totalizar 100%");
@@ -593,15 +669,14 @@ public class ClassificationDialog extends javax.swing.JDialog {
         } else {
             logger.warn("Informe os parâmetros necessarios");
             JOptionPane.showMessageDialog(null, "Informe os parâmetros necessários");
-        }
+        }        
     }//GEN-LAST:event_btSaveActionPerformed
 
     private boolean validateFields() {
         if (tfTrain.getText().equals("")
                 || tfTest.getText().equals("")
-                || cbTechnique.getSelectedIndex() == -1
-                || taDescription.getText().equals("")
-                || jTable1.getSelectedRow() == -1) {
+                || cbTechnique.getSelectedIndex() == 0
+                || taDescription.getText().equals("")) {
             return false;
         } else {
             return true;
@@ -620,36 +695,60 @@ public class ClassificationDialog extends javax.swing.JDialog {
         this.tecnicaCardLayout.show(this.pnTecnicas, (String) cbTechnique.getSelectedItem());
     }//GEN-LAST:event_cbTechniqueActionPerformed
 
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        if (evt.getClickCount() == 1 || evt.getClickCount() == 2) {
-            int line = jTable1.getSelectedRow();
-            cbTechnique.setEnabled(true);
-            Extraction extraction = (Extraction) jTable1.getValueAt(line, 2);
-            if (extraction.getTechnique().equals(ExtractionTechnique.HTK)) {
-                cbTechnique.removeAllItems();
-                cbTechnique.addItem(ClassificationTechnique.HMM.toString());
-                cbTechnique.addItem(ClassificationTechnique.GMM.toString());
+    private void btAddSpeakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddSpeakerActionPerformed
+        logger.info("Botão btAddSpeaker pressionado.");
+        this.filterDialog = new FilterDialog(null, true, 1, new ArrayList<Object>(this.speakersFilter));
+        filterDialog.pack();
+        filterDialog.setLocationRelativeTo(this);
+        filterDialog.setVisible(true);
+        this.speakersFilter = new ArrayList<Speaker>();
+        String cbString = "";
+        for (int i = 0; i < filterDialog.getList().size(); i++) {
+            Speaker speaker = (Speaker) filterDialog.getList().get(i);
+            if (i != filterDialog.getList().size() - 1) {
+                cbString += speaker.getName() + " ; ";
+            } else {
+                cbString += speaker.getName();
             }
-            if (extraction.getTechnique().equals(ExtractionTechnique.MFCC)) {
-                cbTechnique.removeAllItems();
-                cbTechnique.addItem(ClassificationTechnique.SVM.toString());
-                cbTechnique.addItem(ClassificationTechnique.GMM.toString());
-            }
-            if (extraction.getTechnique().equals(ExtractionTechnique.MGCC)) {
-                cbTechnique.removeAllItems();
-                cbTechnique.addItem(ClassificationTechnique.HMM.toString());
-                cbTechnique.addItem(ClassificationTechnique.GMM.toString());
-            }
+            speakersFilter.add(speaker);
         }
-    }//GEN-LAST:event_jTable1MousePressed
+        tfSpeakers.setText(cbString);
+}//GEN-LAST:event_btAddSpeakerActionPerformed
+
+    private void btAddUtteranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddUtteranceActionPerformed
+        logger.info("Botão btAddUtterance pressionado.");
+        this.filterDialog = new FilterDialog(null, true, 0, new ArrayList<Object>(this.utterancesFilter));
+        this.filterDialog.pack();
+        this.filterDialog.setLocationRelativeTo(this);
+        this.filterDialog.setVisible(true);
+        this.utterancesFilter = new ArrayList<Utterance>();
+        String cbString = "";
+        for (int i = 0; i < this.filterDialog.getList().size(); i++) {
+            Utterance utterance = (Utterance) this.filterDialog.getList().get(i);
+            if (i != this.filterDialog.getList().size() - 1) {
+                cbString += utterance.getDescription() + " ; ";
+            } else {
+                cbString += utterance.getDescription();
+            }
+            this.utterancesFilter.add(utterance);
+        }
+        tfUtterances.setText(cbString);
+}//GEN-LAST:event_btAddUtteranceActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddSpeaker;
+    private javax.swing.JButton btAddUtterance;
     private javax.swing.JButton btCancel;
     private javax.swing.JButton btSave;
+    private javax.swing.JComboBox cbEnvironment;
+    private javax.swing.JComboBox cbGender;
+    private javax.swing.JComboBox cbSNR;
     private javax.swing.JComboBox cbTechnique;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -657,18 +756,26 @@ public class ClassificationDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlAge;
     private javax.swing.JLabel jlDescription;
+    private javax.swing.JLabel jlEnvironment;
+    private javax.swing.JLabel jlGender;
+    private javax.swing.JLabel jlSNR;
+    private javax.swing.JLabel jlSpeaker;
     private javax.swing.JLabel jlTechnique;
-    private javax.swing.JLabel jlTechnique1;
     private javax.swing.JLabel jlTest;
     private javax.swing.JLabel jlTrain;
+    private javax.swing.JLabel jlUtterance;
     private javax.swing.JPanel pnTecnicas;
     private javax.swing.JTextArea taDescription;
+    private javax.swing.JTextField tfMaxAge;
+    private javax.swing.JTextField tfMinAge;
+    private javax.swing.JTextField tfSpeakers;
     private javax.swing.JTextField tfTest;
     private javax.swing.JTextField tfTrain;
+    private javax.swing.JTextField tfUtterances;
     private javax.swing.JTextField tfValue;
     // End of variables declaration//GEN-END:variables
 

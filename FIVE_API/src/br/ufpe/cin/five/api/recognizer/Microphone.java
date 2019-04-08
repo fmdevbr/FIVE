@@ -4,7 +4,7 @@
  *
  * This file is part of FIVE (Framework for an Integrated Voice Environment).
  *
- */
+ */ 
 package br.ufpe.cin.five.api.recognizer;
 
 import br.ufpe.cin.five.core.extraction.ExtractionUtil;

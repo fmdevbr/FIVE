@@ -6,7 +6,7 @@
  *
  */
 package br.ufpe.cin.five.api.recognizer.decoder;
-
+  
 import br.ufpe.cin.five.api.recognizer.RecognizerException;
 import br.ufpe.cin.five.api.recognizer.Result;
 import br.ufpe.cin.five.core.classification.Classification;

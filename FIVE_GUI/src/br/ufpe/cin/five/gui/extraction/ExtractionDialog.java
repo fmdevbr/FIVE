@@ -22,7 +22,6 @@ import br.ufpe.cin.five.facade.Facade;
 import br.ufpe.cin.five.gui.dialogs.FilterDialog;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
@@ -32,7 +31,7 @@ import org.apache.log4j.Logger;
 /**
  *
  * @author Alexandre
- */
+ */ 
 public class ExtractionDialog extends JDialog {
 
     public static final String PANEL_MFCC = "MFCC";
@@ -700,10 +699,8 @@ public class ExtractionDialog extends JDialog {
                 extraction.setSampleFilter(filter);
 
                 if (operation == 0) {
-                    facade.insertExtraction(extraction);
-                    logger.info("Extração inserida com sucesso.");                    
-                    File ExtractionDiretory = new File(facade.getProject().getDirectory() + File.separator + "features" + File.separator + extraction.getDescription());                      
-                    ExtractionDiretory.mkdir();
+                    facade.insertExtraction(extraction); 
+                    logger.info("Extração inserida com sucesso.");
                     JOptionPane.showMessageDialog(null, "Extração inserida com sucesso.");
                 } else {
                     extraction.setId(extractionId);

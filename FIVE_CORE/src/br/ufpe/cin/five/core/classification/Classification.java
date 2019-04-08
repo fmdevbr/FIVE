@@ -7,12 +7,9 @@
  */
 package br.ufpe.cin.five.core.classification;
 
-import br.ufpe.cin.five.core.extraction.Extraction;
 import br.ufpe.cin.five.core.sample.SampleFilter;
 import java.io.Serializable;
 import javax.persistence.*;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * This class defines a Classification.<br/>
@@ -42,18 +39,7 @@ public class Classification implements Serializable {
     private SampleFilter sampleFilter;
     private double trainPercentage;
     private double testPercentage;
-    private double thresholdValue; 
-    @ManyToOne( cascade = {CascadeType.PERSIST} )
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Extraction extraction;
-
-    public Extraction getExtraction() {
-        return extraction;
-    }
-
-    public void setExtraction(Extraction extraction) {
-        this.extraction = extraction;
-    }
+    private double thresholdValue;    
     
 
     /**
@@ -213,6 +199,4 @@ public class Classification implements Serializable {
     public boolean equals(Object obj) {
         return obj instanceof Classification ?  this.id == ((Classification) obj).getId() : false;
     }
-
-
 }

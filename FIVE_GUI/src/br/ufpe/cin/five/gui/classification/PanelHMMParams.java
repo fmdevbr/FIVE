@@ -72,7 +72,7 @@ public class PanelHMMParams extends javax.swing.JPanel {
 
         cbTopology.setMinimumSize(new java.awt.Dimension(77, 18));
 
-        jLabel6.setText("Tamanho da Unidade");
+        jLabel6.setText("Topologia do HMM:");
 
         cbUnitSize.setMinimumSize(new java.awt.Dimension(77, 18));
 

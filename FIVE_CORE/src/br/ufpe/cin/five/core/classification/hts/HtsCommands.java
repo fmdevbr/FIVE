@@ -54,7 +54,7 @@ public class HtsCommands {
         String FR = String.valueOf(Double.parseDouble(FS) / Double.parseDouble(SR)); // # frame period (sec)
         double PF = 1.4; // # postfiltering factor*/                
 
-        String command = "\"" + htsPath + File.separator + "hts_engine" + "\"";
+        String command = "\""+htsPath + File.separator + "bin" + File.separator + "hts_engine" + "\"";
         command += " -td " + TREE_DUR + " -tf " + TREE_LF0 + " -tm " + TREE_MGC;
         command += " -md " + PDF_DUR + " -mf " + PDF_LF0 + " -mm " + PDF_MGC;
 
@@ -68,7 +68,7 @@ public class HtsCommands {
         }
 
         command += " -ow " + "\""+wavFile+"\"";
-        command += " -ot " + "\""+traceFile+"\"" + " " + "\""+labFile + "\"";
+        command += " -ot " + "\""+traceFile+"\"" + " " + "\""+labFile +"\"";
 
         if (DEBUG) {
             debugCommand(command);

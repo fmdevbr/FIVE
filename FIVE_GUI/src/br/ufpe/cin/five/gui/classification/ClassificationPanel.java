@@ -86,7 +86,7 @@ public class ClassificationPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Técnica", "Descrição", "Classificado"
+                "id", "Técnica", "Descrição", "Ativo"
             }
         ) {
             boolean[] canEdit = new boolean [] {

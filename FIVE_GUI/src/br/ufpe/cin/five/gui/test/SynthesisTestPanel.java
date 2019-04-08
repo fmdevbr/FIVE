@@ -156,7 +156,7 @@ public class SynthesisTestPanel extends javax.swing.JPanel {
         if(validateFields()) {
             try {            
                 Synthesizer sin = new Synthesizer(projectPath + File.separator + "engine");        
-                sin.synthesize(taPhrase.getText(), cbSpeaker.getSelectedItem().toString(),true);                
+                  
             } catch (SynthesizerException ex) {
                 logger.error(ex.getMessage());
                 JOptionPane.showMessageDialog(null, ex.getMessage());           

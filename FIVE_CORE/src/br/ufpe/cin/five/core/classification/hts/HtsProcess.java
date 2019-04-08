@@ -24,7 +24,7 @@ import java.util.Map;
  *
  * @author Alexandre
  */
-public class HtsProcess {
+public class HtsProcess   {
 
     private String enginePath;
     private String tempPath;
@@ -33,7 +33,7 @@ public class HtsProcess {
     public HtsProcess(String enginePath) {
         this.enginePath = enginePath;
         this.tempPath = enginePath + File.separator + "temp";
-        this.htsPath = enginePath + File.separator + "resources" + File.separator + "hts_engine_API-1.06";
+        this.htsPath = enginePath + File.separator + "resources" + File.separator + "hts_engine-1.01";
     }
 
     public void train() {

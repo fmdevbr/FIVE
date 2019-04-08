@@ -1,6 +1,6 @@
 /**
- * Copyright 2011 Federal University of Pernambuco. 
- * All Rights Reserved. Use is subject to license terms.
+ * Copyright 2011 Federal University of Pernambuco. All Rights Reserved. Use is
+ * subject to license terms.
  *
  * This file is part of FIVE (Framework for an Integrated Voice Environment).
  *
@@ -24,28 +24,19 @@ public class Synthesizer {
         this.vocoder = new Vocoder(enginePath);
     }
 
-    public File synthesize(String phrase, String speaker, boolean playFile) throws SynthesizerException {
+      public File synthesize(String phrase, String speaker, String fileName, 
+        String engineType ) throws SynthesizerException {
         File audioFile = null;
-        try {
-            audioFile = vocoder.vocode(phrase, speaker, "speech");
-            if (playFile == true) {
-                play(audioFile);
-            }
-        } catch (Exception ex) {
-            throw new SynthesizerException(ex.getMessage());
-        }
-        return audioFile;
-    }
-    
-    public File synthesize(String phrase, String speaker, String fileName) throws SynthesizerException {
-        File audioFile = null;
-        try {
-            audioFile = vocoder.vocode(phrase, speaker, fileName);
+        try {      
+                 audioFile = vocoder.vocode(phrase, speaker, fileName, engineType);
         } catch (Exception ex) {
             throw new SynthesizerException(ex.getMessage());
         }
         return audioFile;
     }    
+    
+ 
+   
 
     public void play(File waveFile) throws SynthesizerException {
         try {
@@ -61,4 +52,5 @@ public class Synthesizer {
             throw new SynthesizerException(ex.getMessage());
         }
     }
+
 }

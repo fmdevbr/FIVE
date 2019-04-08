@@ -4,7 +4,7 @@
  *
  * This file is part of FIVE (Framework for an Integrated Voice Environment).
  *
- */
+ */ 
 package br.ufpe.cin.five.api.recognizer;
 
 import br.ufpe.cin.five.api.recognizer.decoder.Decoder;
@@ -96,9 +96,5 @@ public class Recognizer implements MicrophoneListener {
             throw new RecognizerException(ex.getMessage());
         }
         return result;
-    }
-
-    public void startRecognition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

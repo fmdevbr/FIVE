@@ -1,27 +1,15 @@
 
 import br.ufpe.cin.five.api.synthesizer.Synthesizer;
 import br.ufpe.cin.five.api.synthesizer.SynthesizerException;
+import java.io.IOException;
 
-/**
- *
- * @author Alexandre
- */
 public class SynthesisTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, SynthesizerException {
 
-        try {
-            String enginePath = "C:\\Users\\Alexandre\\Desktop\\vlSynthesizer\\engine";
-            
-            Synthesizer syn = new Synthesizer(enginePath);
-            
-            String phrase = "funcionará";
-            String speaker = "cid";
-            
-            syn.synthesize(phrase, speaker, false);                        
-                        
-        } catch (SynthesizerException ex) {
-            System.out.println(ex.getMessage());
-        }
+
+     Synthesizer syn = new Synthesizer("C:\\wamp\\www\\vlSynthesizer");// Pasta de execução
+    // syn.synthesize("frase sintetizada", "lis ou cid", "nome do arquivo", "MaryTTSEngine ou HtsEngine");
+    syn.synthesize("Todos já chegaram então serviremos o jantar.", "cid", "ola", "HtsEngine"); 
     }
 }

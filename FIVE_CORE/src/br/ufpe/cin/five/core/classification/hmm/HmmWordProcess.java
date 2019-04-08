@@ -45,12 +45,6 @@ public class HmmWordProcess extends ClassificationProcess {
         this.tempPath = projectPath + File.separator + "temp";
         this.htkPath = projectPath + File.separator + "resources" + File.separator + "htk-3.3";
     }
-    public HmmWordProcess(String projectPath, String featuresPath) {
-        this.projectPath = projectPath;
-        this.featuresPath = featuresPath;
-        this.tempPath = projectPath + File.separator + "temp";
-        this.htkPath = projectPath + File.separator + "resources" + File.separator + "htk-3.3";
-    }
 
     @Override
     public void train(Object params, ArrayList<Sample> trainningSamples) throws ClassificationException {

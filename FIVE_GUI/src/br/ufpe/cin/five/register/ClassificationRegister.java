@@ -41,17 +41,18 @@ public class ClassificationRegister {
     private Project project;
     private SampleRegister sampleRegister;
     private ExtractionRegister extractionRegister;
+    
 
     public ClassificationRegister(Project project) {
         this.project = project;
         this.sampleRegister = new SampleRegister(project);
         this.extractionRegister = new ExtractionRegister(project);
-
+        
     }
 
     public void insert(Classification classification) throws RegisterException {
         if (search(classification.getId()) == null) {
-//            Facade.getInstance().getConcreteDAO().create(classification.getSampleFilter());
+            Facade.getInstance().getConcreteDAO().create(classification.getSampleFilter());
             Facade.getInstance().getConcreteDAO().create(classification);
             project.getClassifications().add(classification);
             Facade.getInstance().getConcreteDAO().update(this.project);
@@ -105,11 +106,17 @@ public class ClassificationRegister {
         }
         return null;
     }
-
+    
     public void active(Classification classification) throws RegisterException {
-        classification.setActive(true);
-        update(classification);
-    }
+        for (Classification match : project.getClassifications()) {
+            if (match.equals(classification)) {
+                match.setActive(true);                
+            } else {
+                match.setActive(false);
+            }
+            update(match);
+        }
+    }    
 
     public void process(Classification classification) throws RegisterException {
         try {
@@ -121,7 +128,6 @@ public class ClassificationRegister {
 
     public FiveWorker getClassificationWorker(Classification classification, Project project) throws RegisterException {
         return new ClassificationWorker(classification, project);
-
     }
 
     private class ClassificationWorker extends FiveWorker<Void, String> {
@@ -159,8 +165,7 @@ public class ClassificationRegister {
                 int amountOperation = 2;
 
                 // Verificando se há alguma extração ativa
-//                Extraction activeExtraction = extractionRegister.search(true);
-                Extraction activeExtraction = classification.getExtraction();
+                Extraction activeExtraction = extractionRegister.search(true);
                 if (activeExtraction == null) {
                     throw new ClassificationException("Não a nenhuma extração ativa, extraia os samples para pode classificar!");
                 }
@@ -266,7 +271,7 @@ public class ClassificationRegister {
                         HmmParameters hmmParameters = (HmmParameters) classification;
 
                         if (hmmParameters.getUnitSize().equals(HmmUnitSize.WORD)) {
-                            HmmWordProcess hmm = new HmmWordProcess(project.getDirectory(), project.getDirectory() + File.separator + "features" + File.separator + classification.getExtraction().getDescription());
+                            HmmWordProcess hmm = new HmmWordProcess(project.getDirectory());
                             hmm.train(hmmParameters, trainingSamples);
                             hmm.test(hmmParameters, testingSamples);
                         } else if (hmmParameters.getUnitSize().equals(HmmUnitSize.PHONEMES)) {

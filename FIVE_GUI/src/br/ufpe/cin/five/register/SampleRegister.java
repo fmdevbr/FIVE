@@ -106,25 +106,24 @@ public class SampleRegister {
             List<Sample> samplesFound = new ArrayList<Sample>();
 
             for (Sample sample : samples) {
-                boolean snrFilter = (filter.getSnr() == -1000 || sample.getSnr() > filter.getSnr());
-                boolean environmentFilter = (filter.getEnvironment() == null || filter.getEnvironment() == sample.getEnvironment());
+                boolean snrFilter = (filter.getSnr() == -1000 || sample.getSnr() > filter.getSnr()) ? true : false;
+                boolean environmentFilter = (filter.getEnvironment() == null || filter.getEnvironment() == sample.getEnvironment()) ? true : false;
 
                 Speaker speaker = this.speakerRegister.search(sample.getSpeaker().getId());
 
-                boolean genderFilter = (filter.getGender() == null || filter.getGender() == speaker.getGender());
-                boolean speakersFilter = (filter.getSpeakers().isEmpty() || filter.getSpeakers().contains(speaker));
+                boolean genderFilter = (filter.getGender() == null || filter.getGender() == speaker.getGender()) ? true : false;
+                boolean speakersFilter = (filter.getSpeakers().isEmpty() || filter.getSpeakers().contains(speaker)) ? true : false;
                 boolean ageFilter = (filter.getMinAge() == -1 && filter.getMaxAge() == -1)
                         ? true
                         : ((filter.getMaxAge() == -1 && (filter.getMinAge() <= speaker.getAge()))
                         ? true
-                        : ((filter.getMinAge() <= speaker.getAge() && (filter.getMaxAge() >= speaker.getAge()))));
+                        : ((filter.getMinAge() <= speaker.getAge() && (filter.getMaxAge() >= speaker.getAge()))
+                        ? true
+                        : false));
 
                 Utterance utterance = this.utteranceRegister.search(sample.getUtterance().getId());
-                boolean utterancesFilter = (filter.getUtterances().isEmpty() || filter.getUtterances().contains(utterance));
+                boolean utterancesFilter = (filter.getUtterances().isEmpty() || filter.getUtterances().contains(utterance)) ? true : false;
 
-                ageFilter = true;
-                snrFilter = true;       
-                
                 if (genderFilter && utterancesFilter && ageFilter && speakersFilter && environmentFilter && snrFilter) {
                     samplesFound.add(sample);
                 }

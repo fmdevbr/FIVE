@@ -36,17 +36,11 @@ public class HtkProcess extends ExtractionProcess {
     
     public HtkProcess(String projectPath) {
         //this.samplesPath = projectPath + File.separator + "samples";        
-        this.featuresPath = projectPath + File.separator + "features" + File.separator;        
+        this.featuresPath = projectPath + File.separator + "features";        
         this.tempPath = projectPath + File.separator + "temp";  
         this.htkPath = projectPath + File.separator + "resources" + File.separator + "htk-3.3";
     }    
     
-    public HtkProcess(String projectPath, String featurePath) {
-        //this.samplesPath = projectPath + File.separator + "samples";        
-        this.featuresPath = featurePath;        
-        this.tempPath = projectPath + File.separator + "temp";  
-        this.htkPath = projectPath + File.separator + "resources" + File.separator + "htk-3.3";
-    }
     /**
      * Do the extraction on the set of samples
      * @param samples the set of samples

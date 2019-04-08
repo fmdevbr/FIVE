@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/wamp/www/FIVE_GUI/test/FrameTeste.java</file>
+            <file>file:/C:/wamp/www/FIVE_GUI/test/SynthesisTest.java</file>
+            <file>file:/C:/wamp/www/FIVE_GUI/test/RecognizerTest.java</file>
+        </group>
     </open-files>
 </project-private>
